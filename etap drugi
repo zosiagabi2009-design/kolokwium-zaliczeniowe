@@ -1,0 +1,73 @@
+"""plik html"""
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <title>Kalkulator mnożenia</title>
+        <link rel="stylesheet" href="style2.css">
+    </head>
+    <body>
+        <h1>Kalkulator mnożenia</h1>
+        <a href="https://github.com/zosiagabi2009-design/kolokwium-zaliczeniowe.git" target="_blank">
+        Link do repozytorium
+        </a>
+        <div class="form">
+            <input type="number" id="num1" placeholder="Liczba 1" min="1">
+            <input type="number" id="num2" placeholder="Liczba 2" min="1">
+            <button onclick="generate()">Przelicz</button>
+        </div>
+        <div id="result"></div>
+        <script src="script2.js"></script>
+    </body>
+</html>
+
+
+"""plik css"""
+body {
+	font-family: Arial;
+	text-align: center;
+}
+.form {
+	margin: 20px;
+}
+input {
+	padding: 5px;
+	margin: 5px;
+}
+button {
+	padding: 5px 10px;
+}
+#result {
+	margin-top: 20px;
+}
+table {
+	border-collapse: collapse;
+	margin: auto;
+}
+td {
+	border: 1px solid black;
+	padding: 10px;
+	min-width: 40px;
+}
+
+
+"""plik js"""
+function generate() {
+	const a = parseInt(document.getElementById("num1").value);
+	const b = parseInt(document.getElementById("num2").value);
+	const resultDiv = document.getElementById("result");
+	if (a > 0 && b > 0) {
+		let table = "<table>";
+		for (let i = 1; i <= a; i++) {
+			table += "<tr>";
+			for (let j = 1; j <= b; j++) {
+				table += `<td>${i * j}</td>`;
+			}
+			table += "</tr>";
+		}
+		table += "</table>";
+		resultDiv.innerHTML = table;
+	} else {
+		resultDiv.textContent = "Podaj liczby większe od 0";
+	}
+}
